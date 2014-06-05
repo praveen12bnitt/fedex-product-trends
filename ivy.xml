@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+    <info
+        organisation="com.smartworks"
+        module="aztecs-mobile"
+        status="integration">
+	</info>
+	<configurations defaultconfmapping="build->default;compile->compile(*),master(*);test,runtime->runtime(*),master(*)">
+        <conf name="build"/>
+        <conf name="compile"/>
+        <conf name="test" extends="compile"/>
+        <conf name="runtime" extends="compile"/>
+    </configurations>
+    <dependencies>		
+		<dependency org="org.springframework" name="spring-web" rev="4.0.5.RELEASE"/>
+		<dependency org="org.springframework" name="spring-webmvc" rev="4.0.5.RELEASE"/>
+		<dependency org="org.springframework" name="spring-orm" rev="4.0.5.RELEASE"/>
+		<dependency org="org.springframework" name="spring-test" rev="4.0.5.RELEASE"/>
+		<dependency org="org.testng" name="testng" rev="6.7"/>		
+		<dependency org="org.slf4j" name="jcl-over-slf4j" rev="1.6.6"/>
+		<dependency org="org.slf4j" name="log4j-over-slf4j" rev="1.6.6"/>
+		<dependency org="org.slf4j" name="slf4j-api" rev="1.6.6"/>
+		<dependency org="ch.qos.logback" name="logback-classic" rev="1.0.6"/>		
+		<dependency org="commons-dbcp" name="commons-dbcp" rev="1.4" conf="runtime" />
+		<dependency org="javassist" name="javassist" rev="3.7.1.GA" conf="runtime" />
+		<dependency org="jstl" name="jstl" rev="1.2" conf="runtime" />		
+		<dependency org="commons-lang" name="commons-lang" rev="2.6"/>
+		<dependency org="commons-io" name="commons-io" rev="2.4"/>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-core" rev="2.4.0" />
+		<dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.4.0" />
+		<dependency org="com.fasterxml.jackson.core" name="jackson-annotations" rev="2.4.0" />
+		<dependency org="cglib" name="cglib" rev="2.2.2"/>		
+		<dependency org="commons-fileupload" name="commons-fileupload" rev="1.2.2"/>
+		<dependency org="commons-io" name="commons-io" rev="2.3"/>	
+		
+		<dependency org="org.springframework.data" name="spring-data-mongodb" rev="1.5.0.RELEASE"/>	
+			
+	</dependencies>
+</ivy-module>
