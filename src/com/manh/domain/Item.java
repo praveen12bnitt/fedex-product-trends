@@ -13,6 +13,7 @@ public class Item {
 	private String id;
 
 	private String itemName;
+	private String itemDesc;
 	private String itemImage;
 	private Hashtable<Integer, Integer> polarity;
 	private List<Tweet> tweet;
@@ -64,6 +65,14 @@ public class Item {
 
 	public void setTweet(List<Tweet> tweet) {
 		this.tweet = tweet;
+	}
+
+	public String getItemDesc() {
+		return itemDesc;
+	}
+
+	public void setItemDesc(String itemDesc) {
+		this.itemDesc = itemDesc;
 	}
 
 }

@@ -67,6 +67,29 @@ public class ItemController {
 		
 	}
 	
+	
+	@RequestMapping(method = RequestMethod.GET,value = "/getItemHdr/{itemName}")
+	public JSONObject getItemHdr(@PathVariable String itemName) {
+		
+		itemName = URLDecoder.decode(itemName);
+		Query searchTrendQuery = new Query(Criteria.where("itemName").is(
+				itemName));	
+		Item item  = (Item) mongoOperation.findOne(searchTrendQuery, Item.class);
+		
+		 JSONObject obj = new JSONObject(); 	
+		 obj.put("itemName", item.getItemName());
+		 if(item.getItemDesc() == null || item.getItemDesc().equals("")) {
+			 obj.put("itemDesc", item.getItemName());
+		 } else {
+			 obj.put("itemDesc", item.getItemDesc());
+		 }
+		 obj.put("rank", item.getTrendRank());
+			
+		
+		return obj;
+		
+	}
+	
 	@RequestMapping(method = RequestMethod.GET,value = "/save/{itemName}")
 	public Item saveItem(@PathVariable String itemName) {
 		
