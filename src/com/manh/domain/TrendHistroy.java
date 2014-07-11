@@ -21,6 +21,9 @@ public class TrendHistroy {
 	List<String> positiveTweets = new ArrayList<>();
 	List<String> negTweets = new ArrayList<>();
 	List<String> neturalTweets = new ArrayList<>();
+	private int positiveTweetsSize;
+	private int negativeTweetsSize;
+	private int neturalTweetsSize;
 	
 	private String date;
 	
@@ -78,6 +81,24 @@ public class TrendHistroy {
 	}
 	public void setNeturalTweets(List<String> neturalTweets) {
 		this.neturalTweets = neturalTweets;
+	}
+	public int getPositiveTweetsSize() {
+		return positiveTweetsSize;
+	}
+	public void setPositiveTweetsSize(int positiveTweetsSize) {
+		this.positiveTweetsSize = positiveTweetsSize;
+	}
+	public int getNegativeTweetsSize() {
+		return negativeTweetsSize;
+	}
+	public void setNegativeTweetsSize(int negativeTweetsSize) {
+		this.negativeTweetsSize = negativeTweetsSize;
+	}
+	public int getNeturalTweetsSize() {
+		return neturalTweetsSize;
+	}
+	public void setNeturalTweetsSize(int neturalTweetsSize) {
+		this.neturalTweetsSize = neturalTweetsSize;
 	}
 	
 	

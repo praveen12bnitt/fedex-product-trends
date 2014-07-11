@@ -42,6 +42,23 @@ public class ItemController {
 	@Autowired	
 	private ItemService itemService;
 	
+	@RequestMapping(method = RequestMethod.GET,value = "/getTrend/{itemName}")
+	public List<TrendHistroy> getTrend(@PathVariable String itemName) {
+		
+		itemName = URLDecoder.decode(itemName);
+		Query searchTrendQuery = new Query(Criteria.where("itemName").is(
+				itemName));	
+		ArrayList<TrendHistroy> trends  = (ArrayList) mongoOperation.find(searchTrendQuery, TrendHistroy.class);
+		for(TrendHistroy trend: trends) {
+			trend.setNegativeTweetsSize(trend.getNegTweets().size());
+			trend.setPositiveTweetsSize(trend.getPositiveTweets().size());
+			
+		}
+		
+		return trends;
+		
+	}
+	
 	@RequestMapping(method = RequestMethod.GET,value = "/save/{itemName}")
 	public Item saveItem(@PathVariable String itemName) {
 		
