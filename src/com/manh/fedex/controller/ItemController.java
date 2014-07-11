@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -43,19 +44,28 @@ public class ItemController {
 	private ItemService itemService;
 	
 	@RequestMapping(method = RequestMethod.GET,value = "/getTrend/{itemName}")
-	public List<TrendHistroy> getTrend(@PathVariable String itemName) {
+	public List<JSONObject> getTrend(@PathVariable String itemName) {
 		
 		itemName = URLDecoder.decode(itemName);
 		Query searchTrendQuery = new Query(Criteria.where("itemName").is(
 				itemName));	
 		ArrayList<TrendHistroy> trends  = (ArrayList) mongoOperation.find(searchTrendQuery, TrendHistroy.class);
+		
+		List<JSONObject> jsonArray = new ArrayList<>();
+		
+		
 		for(TrendHistroy trend: trends) {
-			trend.setNegativeTweetsSize(trend.getNegTweets().size());
-			trend.setPositiveTweetsSize(trend.getPositiveTweets().size());
+			 JSONObject obj = new JSONObject(); 	
+			 obj.put("time", trend.getDate());
+			 obj.put("negativeTweetsSize", trend.getNegTweets().size());
+			 obj.put("positiveTweetsSize", trend.getPositiveTweets().size());
+			//trend.setNegativeTweetsSize(trend.getNegTweets().size());
+			//trend.setPositiveTweetsSize(trend.getPositiveTweets().size());
+			jsonArray.add(obj);
 			
 		}
 		
-		return trends;
+		return jsonArray;
 		
 	}
 	
