@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="fedex-sdnmgr">
+    <wb-module deploy-name="product-trends-social">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="java-output-path" value="/fedex-sdnmgr/bin"/>
-        <property name="context-root" value="fedex-sdnmgr"/>
+        <property name="java-output-path" value="/product-trends-social/bin"/>
+        <property name="context-root" value="product-trends"/>
     </wb-module>
 </project-modules>

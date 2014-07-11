@@ -19,13 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.manh.domain.Item;
-import com.manh.domain.Person;
 import com.manh.domain.TrendHistroy;
 import com.manh.fedex.services.ItemService;
 import com.manh.fedex.services.PullTweetsService;
 import com.manh.sample.mongodb.CustomerRepository;
 import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 
 @RestController
 @RequestMapping("/item")
