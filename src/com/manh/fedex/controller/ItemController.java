@@ -1,6 +1,8 @@
 package com.manh.fedex.controller;
 
 import java.net.URLDecoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Hashtable;
@@ -121,7 +123,8 @@ public class ItemController {
 		List<Item> items = mongoOperation.findAll(Item.class);
 		
 		for(Item item: items) {
-			updateItem(item);
+			//updateItem(item);
+			item = saveItem(item.getItemName());
 		}
 			
 		return items;
@@ -164,11 +167,13 @@ public class ItemController {
 				trendRank = 2;
 
 		}
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
 		item.setTrendRank(trendRank);
 		
 		trendHistory.setItemName(item.getItemName());
 		trendHistory.setTrendRank(trendRank);
-		trendHistory.setDate(new Date());
+		trendHistory.setDate(dateFormat.format(date));
 		trendHistory.setPolarity(polarity);
 		trendHistory.setTrendRank(trendRank);
 		

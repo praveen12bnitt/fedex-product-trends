@@ -1,6 +1,8 @@
 package com.manh.fedex.services;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -125,29 +127,32 @@ public class ItemServiceImpl implements ItemService {
 			
 			}
 			
+			if (positiveTweets.size() > negTweets.size())
+				trendRank = 4;
+			else if (positiveTweets.size() == negTweets.size())
+				trendRank = 2;
+			else 
+				trendRank = 0;
 			
 			trendHistory.setItemName(itemName);
 			
-			if(processSentimental) {
-				trendHistory.setTrendRank(trendRank);	
-			} else {
-				trendHistory.setTrendRank(existingItem.getTrendRank());
-			}
-			trendHistory.setDate(new Date());
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			Date date = new Date();
+			
+			trendHistory.setTrendRank(trendRank);	
+			
+			trendHistory.setDate(dateFormat.format(date));
 			trendHistory.setNegTweets(negTweets);
 			trendHistory.setPositiveTweets(positiveTweets);
 			trendHistory.setNeturalTweets(neturalTweets);
 			trendHistory.setTrendRank(trendRank);
-			
-			
-			
 			mongoOperation.save(trendHistory);
 			
 			return	existingItem;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			httpClient.getConnectionManager().shutdown();
+			//httpClient.getConnectionManager().shutdown();
 		}
 		return null;
 

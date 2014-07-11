@@ -22,7 +22,7 @@ public class TrendHistroy {
 	List<String> negTweets = new ArrayList<>();
 	List<String> neturalTweets = new ArrayList<>();
 	
-	private Date date;
+	private String date;
 	
 	public String getId() {
 		return id;
@@ -49,10 +49,10 @@ public class TrendHistroy {
 	public void setTrend(String trend) {
 		this.trend = trend;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public int getTrendRank() {
